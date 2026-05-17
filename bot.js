@@ -643,9 +643,7 @@ class TradingBot {
     async loadHistory() {
 
         const url =
-
-            `https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=${CONFIG.INTERVAL}&limit=500`;
-
+"https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=1m&limit=500";
         const response =
             await axios.get(url);
 
@@ -786,7 +784,7 @@ class TradingBot {
 
         const url =
 
-            `wss://stream.binance.com:9443/ws/${CONFIG.SYMBOL}@kline_${CONFIG.INTERVAL}`;
+            `wss://data-stream.binance.vision/ws/${CONFIG.SYMBOL}@kline_${CONFIG.INTERVAL}`;
 
         this.ws =
             new WebSocket(url);
