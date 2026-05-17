@@ -2,7 +2,17 @@
 // BTCUSDT ICT LIQUIDITY + FVG BOT
 // FULL FIXED VERSION
 // ==========================================================
+const express = require("express");
 
+const app = express();
+
+app.get("/", (req, res) => {
+    res.send("BTC BOT RUNNING");
+});
+
+app.listen(process.env.PORT || 3000, () => {
+    console.log("Server Running");
+});
 require("dotenv").config();
 
 const fs = require("fs");
