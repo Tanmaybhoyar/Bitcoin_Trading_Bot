@@ -585,6 +585,10 @@ class TradingBot {
 
     constructor() {
 
+    console.log(
+        "✅ INSIDE CONSTRUCTOR"
+    );
+
     this.strategy =
         new ICTStrategy();
 
@@ -596,17 +600,7 @@ class TradingBot {
         losses: 0
     };
 
-    console.log(
-        "✅ TradingBot Constructor"
-    );
-
-    this.start().catch(err => {
-
-        console.log(
-            "START ERROR:",
-            err
-        );
-    });
+    this.start();
 }
 
     // ======================================================
@@ -616,21 +610,13 @@ class TradingBot {
     async start() {
 
     console.log(
-        "✅ START FUNCTION"
+        "✅ START FUNCTION RUNNING"
     );
 
     await this.loadHistory();
 
     console.log(
         "✅ HISTORY LOADED"
-    );
-
-    await this.sendTelegram(
-        "🚀 BOT SUCCESSFULLY DEPLOYED ON RENDER"
-    );
-
-    console.log(
-        "✅ TELEGRAM SENT"
     );
 
     this.connect();
@@ -1110,20 +1096,8 @@ EXIT PRICE: ${price}`
 // START BOT
 // ==========================================================
 
-(async () => {
+console.log("🚀 CREATING BOT INSTANCE");
 
-    try {
+const bot = new TradingBot();
 
-        console.log("🚀 BOT STARTING...");
-
-        const bot = new TradingBot();
-
-    } catch (err) {
-
-        console.log(
-            "STARTUP ERROR:",
-            err
-        );
-    }
-
-})();
+console.log("✅ BOT INSTANCE CREATED");
