@@ -593,6 +593,9 @@ class TradingBot {
     async start() {
 
         await this.loadHistory();
+        await this.sendTelegram(
+    "🚀 BOT SUCCESSFULLY DEPLOYED ON RENDER"
+);
 
         this.connect();
     }
