@@ -608,6 +608,9 @@ class TradingBot {
     // ======================================================
 
     async start() {
+        await this.sendTelegram(
+    "🚀 TELEGRAM TEST SUCCESS"
+);
 
     console.log(
         "✅ START FUNCTION RUNNING"
@@ -663,23 +666,40 @@ class TradingBot {
 
     async sendTelegram(message) {
 
-        try {
+    try {
 
-            await telegram.sendMessage(
+        console.log(
+            "📩 Sending Telegram..."
+        );
 
-                process.env.TELEGRAM_CHAT_ID,
+        console.log(
+            "CHAT ID:",
+            process.env.TELEGRAM_CHAT_ID
+        );
 
-                message
-            );
+        await telegram.sendMessage(
 
-        } catch (err) {
+            process.env.TELEGRAM_CHAT_ID,
 
-            console.log(
-                "Telegram Error:",
-                err.message
-            );
-        }
+            message
+        );
+
+        console.log(
+            "✅ TELEGRAM SENT"
+        );
+
+    } catch (err) {
+
+        console.log(
+            "❌ TELEGRAM ERROR:"
+        );
+
+        console.log(
+            err.response?.body ||
+            err.message
+        );
     }
+}
 
     // ======================================================
     // LOG TRADE
