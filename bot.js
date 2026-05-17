@@ -571,20 +571,29 @@ class TradingBot {
 
     constructor() {
 
-        this.strategy =
-            new ICTStrategy();
+    this.strategy =
+        new ICTStrategy();
 
-        this.position = null;
+    this.position = null;
 
-        this.stats = {
+    this.stats = {
 
-            wins: 0,
+        wins: 0,
+        losses: 0
+    };
 
-            losses: 0
-        };
+    console.log(
+        "✅ TradingBot Constructor"
+    );
 
-        this.start();
-    }
+    this.start().catch(err => {
+
+        console.log(
+            "START ERROR:",
+            err
+        );
+    });
+}
 
     // ======================================================
     // START
@@ -592,13 +601,26 @@ class TradingBot {
 
     async start() {
 
-        await this.loadHistory();
-        await this.sendTelegram(
-    "🚀 BOT SUCCESSFULLY DEPLOYED ON RENDER"
-);
+    console.log(
+        "✅ START FUNCTION"
+    );
 
-        this.connect();
-    }
+    await this.loadHistory();
+
+    console.log(
+        "✅ HISTORY LOADED"
+    );
+
+    await this.sendTelegram(
+        "🚀 BOT SUCCESSFULLY DEPLOYED ON RENDER"
+    );
+
+    console.log(
+        "✅ TELEGRAM SENT"
+    );
+
+    this.connect();
+}
 
     // ======================================================
     // LOAD HISTORY
@@ -1076,4 +1098,20 @@ EXIT PRICE: ${price}`
 // START BOT
 // ==========================================================
 
-new TradingBot();
+(async () => {
+
+    try {
+
+        console.log("🚀 BOT STARTING...");
+
+        const bot = new TradingBot();
+
+    } catch (err) {
+
+        console.log(
+            "STARTUP ERROR:",
+            err
+        );
+    }
+
+})();
