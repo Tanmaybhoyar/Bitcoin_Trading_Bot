@@ -2,6 +2,20 @@
 // BTCUSDT ICT LIQUIDITY + FVG BOT
 // FULL FIXED VERSION
 // ==========================================================
+process.on("uncaughtException", (err) => {
+
+    console.log("UNCAUGHT EXCEPTION:");
+    console.log(err);
+});
+
+process.on("unhandledRejection", (err) => {
+
+    console.log("UNHANDLED REJECTION:");
+    console.log(err);
+});
+
+console.log("🚀 BOT FILE STARTED");
+
 const express = require("express");
 
 const app = express();
